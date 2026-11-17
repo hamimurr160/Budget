@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Budget</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-sky">
+<header>
+  <button id="menu-btn" class="menu-btn" aria-label="Open menu">☰</button>
+  <span class="brand">Budget</span>
+  <button id="bell-btn" class="menu-btn bell-head" aria-label="Reminder">🔔</button>
+</header>
+
+<div id="drawer-overlay"></div>
+<aside id="drawer">
+  <h3>Budget</h3>
+  <div id="drawer-items"></div>
+</aside>
+
+<main id="main"></main>
+
+<div id="fab-overlay"></div>
+<div id="fab-menu" aria-hidden="true">
+  <button class="fab-opt" data-fab="transaction"><span>＋</span> Transaction</button>
+  <button class="fab-opt" data-fab="history"><span>☰</span> History</button>
+  <button class="fab-opt" data-fab="dashboard"><span>⌂</span> Dashboard</button>
+</div>
+<button id="fab" aria-label="Add or open">+</button>
+
+<script src="core/core.js"></script>
+<script src="core/i18n.js"></script>
+<script src="core/labels.js"></script>
+<script src="core/time.js"></script>
+<script src="pages/dashboard.js"></script>
+<script src="pages/history.js"></script>
+<script src="pages/accounts.js"></script>
+<script src="pages/plan.js"></script>
+<script src="pages/loans.js"></script>
+<script src="pages/savings.js"></script>
+<script src="pages/trash.js"></script>
+<script src="pages/settings.js"></script>
+<script src="pages/export.js"></script>
+<script src="components/date-picker.js"></script>
+<script src="components/panel.js"></script>
+<script src="components/success.js"></script>
+<script src="components/transaction-sheet.js"></script>
+<script src="components/fab-menu.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
