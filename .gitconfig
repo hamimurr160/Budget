@@ -1,3 +1,5 @@
 [user]
 	email = hamimurr160@gmail.com
 	name = Your GitHub Username
+[credential]
+	helper = store
