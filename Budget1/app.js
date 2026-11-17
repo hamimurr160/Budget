@@ -109,3 +109,42 @@
     start();
   }
 })();
+
+// ---- PWA: offline support and "Install app" ----
+// Paste this at the very END of app.js. Do not change anything else in the file.
+
+// 1. Register the service worker (offline support).
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').catch(function (err) {
+      console.warn('Service worker failed:', err);
+    });
+  });
+}
+
+// 2. Optional "Install app" button. It appears only when the phone allows installing.
+var deferredInstall = null;
+var installBtn = document.createElement('button');
+installBtn.textContent = 'Install app';
+installBtn.hidden = true;
+installBtn.style.cssText = 'position:fixed;left:14px;bottom:14px;z-index:60;padding:10px 14px;border:0;border-radius:999px;background:#1e88e5;color:#fff;font-weight:700;box-shadow:0 2px 8px rgba(0,0,0,.2);';
+document.body.appendChild(installBtn);
+
+window.addEventListener('beforeinstallprompt', function (e) {
+  e.preventDefault();
+  deferredInstall = e;
+  installBtn.hidden = false;
+});
+
+installBtn.addEventListener('click', function () {
+  if (!deferredInstall) return;
+  deferredInstall.prompt();
+  deferredInstall.userChoice.then(function () {
+    deferredInstall = null;
+    installBtn.hidden = true;
+  });
+});
+
+window.addEventListener('appinstalled', function () {
+  installBtn.hidden = true;
+});
